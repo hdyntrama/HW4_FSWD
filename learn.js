@@ -1,106 +1,108 @@
-let nilairandom = [];
-for (let i = 1; i <= 100; i++) {
-  let nilai = Math.floor(Math.random()*50 ) +1 ;
-  nilairandom.push(nilai);
+let randomArr = [];
+let arrayGanjil = [];
+let arrayGenap = [];
+let i;
+
+for (i = 0; i < 100; i++) {
+  const arrays = (Math.random() * 50 + 1) | 0;
+  randomArr.push(arrays);
 }
 
+console.log("Random array:", randomArr);
 
-const angkaGenap = []
-const angkaGanjil = []
-for(let i=0; i < nilairandom.length; i++){
-  if(i % 2 === 0){
-    angkaGenap.push(nilairandom[i])
-  }
-  else{
-    angkaGanjil.push(nilairandom[i])
+for (i = 0; i < randomArr.length; i++) {
+  if (i % 2 === 0) {
+    arrayGenap.push(randomArr[i]);
+  } else {
+    arrayGanjil.push(randomArr[i]);
   }
 }
-function minimal(arr) {
-  let minValue = arr[0];
 
-  for (let i = 1; i < arr.length; i++) {
-    if (arr[i] < minValue) {
-      minValue = arr[i];
+console.log("arrayGanjil:", arrayGanjil);
+console.log("arrayGenap:", arrayGenap);
+
+function getMin(arr) {
+  for (i = 0; i < arr.length; i++) {
+    if (arr[i] < arr[0]) {
+      arr[0] = arr[i];
     }
   }
-
-  return minValue;
+  return arr[0];
 }
-       
-function maksimal(arr) {
-  let maxValue = arr[0];
 
-  for (let i = 1; i < arr.length; i++) {
-    if (arr[i] > maxValue) {
-      maxValue = arr[i];
+function getMax(arr) {
+  for (i = 0; i < arr.length; i++) {
+    if (arr[i] > arr[0]) {
+      arr[0] = arr[i];
     }
   }
-
-  return maxValue;
-}
-function total(arr){
-  let nilai = 0;
-  for(i = 0; i<arr.length; i++){
-      nilai = nilai + arr[i]
-  }
-
-  return nilai
+  return arr[0];
 }
 
-function rataRata(arr){
-  return total(arr) /arr.length
+function getTotalArray(arr, val = 0) {
+  for (i = 0; i < arr.length; i++) {
+    val += arr[i];
+  }
+  return val;
 }
 
+function getRataRataArray(arr, sum, val = 0) {
+  val = sum / arr.length;
+  return val;
+}
 
+/* get Ganjil */
+const minArrayGanjil = getMin(arrayGanjil);
+const maxArrayGanjil = getMax(arrayGanjil);
+const totalArrayGanjil = getTotalArray(arrayGanjil);
+const rataRataArrayGanjil = getRataRataArray(arrayGanjil, totalArrayGanjil);
 
+/* get Genap */
+const minArrayGenap = getMin(arrayGenap);
+const maxArrayGenap = getMax(arrayGenap);
+const totalArrayGenap = getTotalArray(arrayGenap);
+const rataRataArrayGenap = getRataRataArray(arrayGenap, totalArrayGenap);
 
+/* compare */
+const compareMinArray =
+  minArrayGanjil === minArrayGenap
+    ? "Min Ganjil dan Min Genap memiliki nilai sama"
+    : minArrayGanjil > minArrayGenap
+    ? "Min lebih besar array Ganjil"
+    : "Min lebih besar array Genap";
 
+const compareMaxArray =
+  maxArrayGanjil === maxArrayGenap
+    ? "Max Ganjil dan Max Genap memiliki nilai sama"
+    : maxArrayGanjil > maxArrayGenap
+    ? "Max lebih besar array Ganjil"
+    : "Max lebih besar array Genap";
 
-console.log("angka random:", nilairandom);
-console.log("angka genap:", angkaGenap);
-console.log("angka maksimal di index genap:", maksimal(angkaGenap));
-console.log("angka minimal di index genap:", minimal(angkaGenap));
-console.log("total angka di index genap:", total(angkaGenap));
-console.log("rata rata angka di index genap:", rataRata(angkaGenap));
+const compareTotal =
+  totalArrayGanjil === totalArrayGenap
+    ? "Total array Genap dan Ganjil memiliki nilai sama"
+    : totalArrayGanjil > totalArrayGenap
+    ? "Total lebih besar array Ganjil"
+    : "Total lebih besar array Genap";
 
-console.log("angka ganjil:", angkaGanjil);
-console.log("angka maksimal di index ganjil:", maksimal(angkaGanjil));
-console.log("angka minimal di index ganjil:", minimal(angkaGanjil));
-console.log("total angka di index ganjil:", total(angkaGanjil));
-console.log("rata rata angka di index ganjil:", rataRata(angkaGanjil))
+const compareRataRata =
+  rataRataArrayGanjil === rataRataArrayGenap
+    ? "Rata rata array Genap dan Ganjil memiliki nilai sama"
+    : rataRataArrayGanjil > rataRataArrayGenap
+    ? "Rata rata lebih besar array Ganjil"
+    : "Rata rata lebih besar array Genap";
 
-console.log ("Hasil Perbandingan nilai antara Array Genap dan Array Ganjil : ");
+console.log("minArrayGanjil:", minArrayGanjil);
+console.log("maxArrayGanjil:", maxArrayGanjil);
+console.log("totalArrayGanjil:", totalArrayGanjil);
+console.log("rataRataArrayGanjil:", rataRataArrayGanjil);
 
-if (minimal(angkaGenap) === minimal(angkaGanjil)) {
-    console.log("nilai minimal pada Array Genap dan Array Ganjil Sama")
-  } else if(minimal(angkaGenap) > minimal(angkaGanjil)) {
-    console.log("nilai minimal pada Array genap lebih besar dari Array ganjil")
-  }else {
-    console.log("nilai minimal pada Array ganjil lebih besar dari Array genap")
-  }
+console.log("minArrayGenap:", minArrayGenap);
+console.log("maxArrayGenap:", maxArrayGenap);
+console.log("totalArrayGenap:", totalArrayGenap);
+console.log("rataRataArrayGenap:", rataRataArrayGenap);
 
-  if (maksimal(angkaGenap) === maksimal(angkaGanjil)) {
-    console.log("nilai maksimal pada Array Genap dan Array Ganjil Sama")
-  } else if(maksimal(angkaGenap) > maksimal(angkaGanjil)) {
-    console.log("nilai maksimal pada Array genap lebih besar dari Array ganjil")
-  }else {
-    console.log("nilai maksimal Array ganjil lebih besar dari Array genap")
-  }
-
-  if (total(angkaGenap) === total(angkaGanjil)) {
-    console.log("nilai total pada Array Genap dan Array Ganjil Sama")
-  } else if(total(angkaGenap) > total(angkaGanjil)) {
-    console.log("nilai total pada Array genap lebih besar dari Array ganjil")
-  }else {
-    console.log("nilai total Array ganjil lebih besar dari Array genap")
-  }
-
-  
-  if (rataRata(angkaGenap) === rataRata(angkaGanjil)) {
-    console.log("nilai rata rata pada Array Genap dan Array Ganjil Sama")
-  } else if(total(angkaGenap) > total(angkaGanjil)) {
-    console.log("nilai rata rata pada Array genap lebih besar dari Array ganjil")
-  }else {
-    console.log("nilai rata rata Pada Array ganjil lebih besar dari Array genap")
-  }
-
+console.log(compareMinArray);
+console.log(compareMaxArray);
+console.log(compareTotal);
+console.log(compareRataRata);
