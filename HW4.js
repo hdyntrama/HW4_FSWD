@@ -2,13 +2,13 @@
 //Hadiyantrama Oscar Santoso - FSWD Class B
 //Mentor : Taufik Mulyawan
 
-//Buatlah 100 nilai random (1 sampai 50) pada 1 array
+//Create 100 Random Array
 const nilaiRandom = [];
 for (let i = 0; i < 100; i++) {
   nilaiRandom.push(Math.floor(Math.random() * 50) + 1);
 }
 
-// b. Pecahlah menjadi 2 array berdasarkan indexnya, yakni array pada index genap dan array pada index ganjil
+// Split it into 2 arrays based on the index
 const arrayGenap = [];
 const arrayGanjil = [];
 
@@ -20,7 +20,7 @@ for (let i = 0; i < nilaiRandom.length; i++) {
   }
 }
 
-// c. Gunakan 2 array yang telah dibuat untuk mendapatkan Min, Max, Total, dan Rata-rata
+// Create Function of array to find min max total and average values
 function hitungStatistik(arr) {
   if (arr.length === 0) {
     return {
@@ -58,7 +58,7 @@ function hitungStatistik(arr) {
 const statistikGenap = hitungStatistik(arrayGenap);
 const statistikGanjil = hitungStatistik(arrayGanjil);
 
-// d. Bandingkan kedua buah array
+// Compare 2 array
 function bandingkanStatistik(statistik1, statistik2) {
   let hasilBanding = '';
 
