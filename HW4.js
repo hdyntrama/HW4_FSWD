@@ -1,4 +1,8 @@
-// a. Buatlah 100 nilai random (1 sampai 50) pada 1 array
+//Homework 4 Version Control
+//Hadiyantrama Oscar Santoso - FSWD Class B
+//Mentor : Taufik Mulyawan
+
+//Buatlah 100 nilai random (1 sampai 50) pada 1 array
 const nilaiRandom = [];
 for (let i = 0; i < 100; i++) {
   nilaiRandom.push(Math.floor(Math.random() * 50) + 1);
